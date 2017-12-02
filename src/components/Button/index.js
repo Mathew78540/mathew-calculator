@@ -1,5 +1,4 @@
 import React from 'react';
-import { any, func } from 'prop-types';
 
 // Styles
 import './styles.css';
@@ -10,12 +9,7 @@ import './styles.css';
  * @param {object} props
  */
 const Button = (props) => (
-  <button {...props} />
+  <button {...props} className="button" />
 );
-
-Button.propTypes = {
-  children: any,
-  onClick: func,
-};
 
 export default Button;
