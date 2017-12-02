@@ -1,0 +1,36 @@
+.calculator {
+  width: 300px;
+  height: 350px;
+  margin: 100px auto;
+  background-color: gainsboro;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex: 1;
+}
+
+.operatorsContainer {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #444;
+}
+
+.operatorsContainer > button {
+  width: 100%;
+  height: 25%;
+}
+
+.digitsContainer {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.digitsContainer > button {
+  width: 33%;
+}
