@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 // Styles
 import './styles.css';
@@ -8,38 +10,62 @@ import Button from '../../components/Button';
 import ClearButton from '../../components/ClearButton';
 import Output from '../../components/Output';
 
+import { AddOperation, getResultOperation, clearOperation } from '../../reducers/operation';
+import { saveOperation } from '../../reducers/operations';
+
 /**
  * Calculator
  */
 class Calculator extends PureComponent {
+  /**
+   * HandleClickClearButton
+   * 
+   * @description
+   * 
+   */
+  handleClickClearButton = () => {
+    const { operation, clearOperation, saveOperation } = this.props;
+
+    saveOperation(operation);
+    clearOperation();
+  }
+
+  /**
+   * Render
+   */
   render() {
+    const {
+      props: { operation, AddOperation, getResultOperation },
+      handleClickClearButton,
+    } = this;
+
     return (
       <div className="calculator">
         {/* Output */}
-        <Output currentOperation="20x2" currentResult="40" />
+        <Output operation={operation} />
 
         {/* Commands */}
         <div className="buttonsContainer">
-          <ClearButton>C</ClearButton>
+          <ClearButton onClick={() => handleClickClearButton()}>C</ClearButton>
           <div className="digitsContainer">
-            <Button>0</Button>
-            <Button>.</Button>
-            <Button>=</Button>
-            <Button>1</Button>
-            <Button>2</Button>
-            <Button>3</Button>
-            <Button>4</Button>
-            <Button>5</Button>
-            <Button>6</Button>
-            <Button>7</Button>
-            <Button>8</Button>
-            <Button>9</Button>
+            <Button onClick={() => AddOperation(0)}>0</Button>
+            <Button onClick={() => AddOperation('.')}>.</Button>
+            <Button onClick={() => getResultOperation()}>=</Button>
+            <Button onClick={() => AddOperation(1)}>1</Button>
+            <Button onClick={() => AddOperation(2)}>2</Button>
+            <Button onClick={() => AddOperation(3)}>3</Button>
+            <Button onClick={() => AddOperation(4)}>4</Button>
+            <Button onClick={() => AddOperation(5)}>5</Button>
+            <Button onClick={() => AddOperation(6)}>6</Button>
+            <Button onClick={() => AddOperation(7)}>7</Button>
+            <Button onClick={() => AddOperation(8)}>8</Button>
+            <Button onClick={() => AddOperation(9)}>9</Button>
           </div>
           <div className="operatorsContainer">
-            <Button>X</Button>
-            <Button>-</Button>
-            <Button>+</Button>
-            <Button>/</Button>
+            <Button onClick={() => AddOperation('*')}>X</Button>
+            <Button onClick={() => AddOperation('-')}>-</Button>
+            <Button onClick={() => AddOperation('+')}>+</Button>
+            <Button onClick={() => AddOperation('/')}>/</Button>
           </div>
         </div>
       </div>
@@ -47,4 +73,19 @@ class Calculator extends PureComponent {
   }
 }
 
-export default Calculator;
+const mapStateToProps = ({ operation }) => ({
+  operation,
+});
+
+const mapDispatchToProps = {
+  AddOperation,
+  getResultOperation,
+  clearOperation,
+  saveOperation,
+};
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+export default compose(
+  withConnect,
+)(Calculator);
