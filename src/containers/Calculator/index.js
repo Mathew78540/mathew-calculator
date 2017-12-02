@@ -5,6 +5,7 @@ import './styles.css';
 
 // Components
 import Button from '../../components/Button';
+import ClearButton from '../../components/ClearButton';
 import Output from '../../components/Output';
 
 /**
@@ -19,6 +20,7 @@ class Calculator extends PureComponent {
 
         {/* Commands */}
         <div className="buttonsContainer">
+          <ClearButton>C</ClearButton>
           <div className="digitsContainer">
             <Button>0</Button>
             <Button>.</Button>
