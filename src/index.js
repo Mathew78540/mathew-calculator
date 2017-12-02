@@ -7,10 +7,10 @@ import store from './configureStore';
 import './index.css';
 
 // Containers
-import Calculator from './containers/Calculator';
+import App from './containers/App';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Calculator />
+    <App />
   </Provider>
   , document.getElementById('root'));
