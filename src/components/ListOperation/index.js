@@ -12,8 +12,8 @@ import './styles.css';
  */
 const ListOperation = ({ operation }) => (
   <div className="operation">
-    <span>{operation.calcul}</span>
-    <span>{operation.result}</span>
+    <span>{operation.calcul}</span> =
+     <span>{operation.result}</span>
   </div>
 );
 

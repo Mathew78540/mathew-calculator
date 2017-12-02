@@ -3,6 +3,6 @@
   max-height: 150px;
   overflow: scroll;
   background-color: gainsboro;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  box-sizing: border-box;
+  padding: 10px;
 }

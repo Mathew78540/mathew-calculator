@@ -36,7 +36,7 @@ class Admin extends PureComponent {
    * RenderOperations
    */
   renderOperations = (operations) => operations
-    .map((operation) => <ListOperation operation={operation} />)
+    .map((operation, index) => <ListOperation key={index} operation={operation} />)
 
   /**
    * Render
