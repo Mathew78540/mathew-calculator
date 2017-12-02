@@ -1,16 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import calculatorReducer from './reducers';
+import store from './configureStore';
 
 // Styles
 import './index.css';
 
 // Containers
 import Calculator from './containers/Calculator';
-
-const store = createStore(calculatorReducer);
 
 ReactDOM.render(
   <Provider store={store}>

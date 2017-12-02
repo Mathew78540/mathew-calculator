@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
 
-/**
- * TODO Add reducer operations
- */
-export default combineReducers({});
+// Reducers
+import operationReducer from './operation';
+import operationsReducer from './operations';
+
+export default combineReducers({
+  operation: operationReducer,
+  operations: operationsReducer,
+});
