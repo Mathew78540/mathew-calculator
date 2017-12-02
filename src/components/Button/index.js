@@ -8,11 +8,9 @@ import './styles.css';
  * Button
  * 
  * @param {object} props
- * @param {object} props.children
- * @param {Function} props.onClick 
  */
-const Button = ({ children, onClick }) => (
-  <button onClick={onClick}>{children}</button>
+const Button = (props) => (
+  <button {...props} />
 );
 
 Button.propTypes = {
