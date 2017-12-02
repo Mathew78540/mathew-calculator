@@ -1,5 +1,5 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { shape, string } from 'prop-types';
 
 // Styles
 import './styles.css';
@@ -8,21 +8,22 @@ import './styles.css';
  * Output
  * 
  * @param {object} props 
- * @param {string} props.currentOperation
- * @param {string} props.currentResult 
+ * @param {object} props.operation
  */
-const Output = ({ currentOperation, currentResult }) => (
+const Output = ({ operation }) => (
   <div className="outputsContainer">
     <div>
-      <span className="currentOperation">{currentOperation}</span>
-      <span className="currentResult">{currentResult}</span>
+      <span className="currentOperation">{operation.calcul}</span>
+      <span className="currentResult">{operation.result}</span>
     </div>
   </div>
 );
 
 Output.propTypes = {
-  currentOperation: string,
-  currentResult: string,
+  operation: shape({
+    calcul: string,
+    result: string,
+  }),
 }
 
 export default Output;
