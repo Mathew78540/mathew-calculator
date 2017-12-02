@@ -21,9 +21,11 @@
  font-size: 0.9rem;
  opacity: 0.8;
  display: block;
+ text-align: right;
 }
 
 .currentResult {
  font-size: 2rem;
  align-self: flex-end;
+ text-align: right;
 }
