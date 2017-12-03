@@ -10,24 +10,56 @@ import Button from '../../components/Button';
 import ClearButton from '../../components/ClearButton';
 import Output from '../../components/Output';
 
+// Store
 import { AddOperation, getResultOperation, clearOperation } from '../../reducers/operation';
 import { saveOperation } from '../../reducers/operations';
+
+// Helpers
+import { generateRandomOperation } from './helper';
 
 /**
  * Calculator
  */
 class Calculator extends PureComponent {
   /**
+   * ComponentDidMount
+   * 
+   * @description
+   * Listen keyPress
+   */
+  componentDidMount() {
+    window.addEventListener('keypress', (e) => {
+      if (e.keyCode === 32) {
+        this.pushRandomOperation();
+      }
+    }, false);
+  }
+
+  /**
+   * PushRandomOperation
+   * 
+   * @description
+   * Get random operation and push it into the reducer
+   */
+  pushRandomOperation = () => {
+    const randomOperation = generateRandomOperation();
+
+    this.props.clearOperation();
+    this.props.AddOperation(randomOperation);
+    this.handleClickGetResultOperation();
+  }
+
+  /**
    * HandleClickClearButton
    * 
    * @description
    * 
    */
-  handleClickClearButton = () => {
-    const { operation, clearOperation, saveOperation } = this.props;
+  handleClickGetResultOperation = () => {
+    const { operation, getResultOperation, saveOperation } = this.props;
 
+    getResultOperation();
     saveOperation(operation);
-    clearOperation();
   }
 
   /**
@@ -35,8 +67,8 @@ class Calculator extends PureComponent {
    */
   render() {
     const {
-      props: { operation, AddOperation, getResultOperation },
-      handleClickClearButton,
+      props: { operation, AddOperation, clearOperation },
+      handleClickGetResultOperation,
     } = this;
 
     return (
@@ -46,11 +78,11 @@ class Calculator extends PureComponent {
 
         {/* Commands */}
         <div className="buttonsContainer">
-          <ClearButton onClick={() => handleClickClearButton()}>C</ClearButton>
+          <ClearButton onClick={() => clearOperation()}>C</ClearButton>
           <div className="digitsContainer">
             <Button onClick={() => AddOperation(0)}>0</Button>
             <Button onClick={() => AddOperation('.')}>.</Button>
-            <Button onClick={() => getResultOperation()}>=</Button>
+            <Button onClick={() => handleClickGetResultOperation()}>=</Button>
             <Button onClick={() => AddOperation(1)}>1</Button>
             <Button onClick={() => AddOperation(2)}>2</Button>
             <Button onClick={() => AddOperation(3)}>3</Button>
