@@ -3,6 +3,8 @@
  * 
  * @description
  * Generate random number
+ * 
+ * @returns {string}
  */
 export const getRandomNumber = (min = 1, max = 100) => Math.floor((Math.random() * max) + min);
 
@@ -11,6 +13,8 @@ export const getRandomNumber = (min = 1, max = 100) => Math.floor((Math.random()
  * 
  * @description
  * Generate random operator
+ * 
+ * @returns {string}
  */
 export const getRandomOperator = () => {
   const operators = ['+', '/', '*', '-'];
@@ -37,7 +41,9 @@ export const returnCalculResult = (calcul) => {
  * GenerateRandomOperation
  * 
  * @description
- * Generate random string to calculate
+ * Return a object with the calcul string and the result
+ * 
+ * @returns {Object}
  */
 export const generateRandomOperation = () => {
   const numberOfDigits = getRandomNumber(1, 5);

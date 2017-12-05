@@ -1,13 +1,11 @@
 import { handleActions, createAction } from 'redux-actions';
-
-// Helpers
 import { returnCalculResult } from './helper';
 
 // Types
-export const ADD_CALCUL = 'src/ducks/ADD_CALCUL';
-export const GET_RESULT_OPERATION = 'src/ducks/GET_RESULT_OPERATION';
-export const CLEAR_OPERATION = 'src/ducks/CLEAR';
-export const RANDOM_OPERATION = 'src/ducks/RANDOM_OPERATION';
+export const ADD_CALCUL = 'src/ducks/operation/ADD_CALCUL';
+export const GET_RESULT_OPERATION = 'src/ducks/operation/GET_RESULT_OPERATION';
+export const CLEAR_OPERATION = 'src/ducks/operation/CLEAR';
+export const RANDOM_OPERATION = 'src/ducks/operation/RANDOM_OPERATION';
 
 // Actions
 export const addCalcul = createAction(ADD_CALCUL);

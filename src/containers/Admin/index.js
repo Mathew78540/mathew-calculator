@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { array } from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
@@ -13,6 +14,10 @@ import './styles.css';
  * Admin
  */
 class Admin extends PureComponent {
+  static propTypes = {
+    operations: array,
+  }
+
   /**
    * State
    */

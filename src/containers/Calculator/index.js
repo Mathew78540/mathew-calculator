@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { func, object } from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
@@ -20,11 +21,19 @@ import { generateRandomOperation } from '../../ducks/helper';
  * Calculator
  */
 class Calculator extends PureComponent {
+  static propTypes = {
+    addCalcul: func,
+    getResultOperation: func,
+    clearOperation: func,
+    randomOperation: func,
+    operation: object,
+  };
+
   /**
    * ComponentDidMount
    * 
    * @description
-   * Listen keyPress
+   * Listen keyPress and if keyCode equal 32 we execute a monkeyTest
    */
   componentDidMount() {
     window.addEventListener('keypress', ({ keyCode }) => {
