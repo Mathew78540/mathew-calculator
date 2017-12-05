@@ -12,7 +12,6 @@ import Output from '../../components/Output';
 
 // Ducks
 import { addCalcul, getResultOperation, clearOperation, randomOperation } from '../../ducks/operation';
-import { saveOperation } from '../../ducks/operations';
 
 // Helpers
 import { generateRandomOperation } from '../../ducks/helper';
@@ -28,26 +27,24 @@ class Calculator extends PureComponent {
    * Listen keyPress
    */
   componentDidMount() {
-    window.addEventListener('keypress', (e) => {
-      if (e.keyCode === 32) {
-        const operation = generateRandomOperation();
-
-        this.props.randomOperation(operation);
+    window.addEventListener('keypress', ({ keyCode }) => {
+      if (keyCode === 32) {
+        this.monkeyTest();
       }
     }, false);
   }
 
   /**
-   * HandleClickClearButton
+   * MonkeyTest
    * 
    * @description
-   * 
+   * Generate random operation, and push into the reducer
    */
-  handleClickGetResultOperation = () => {
-    const { operation, getResultOperation, saveOperation } = this.props;
+  monkeyTest = () => {
+    const { props: { randomOperation } } = this;
+    const operation = generateRandomOperation();
 
-    getResultOperation();
-    saveOperation(operation);
+    randomOperation(operation);
   }
 
   /**
@@ -55,7 +52,7 @@ class Calculator extends PureComponent {
    */
   render() {
     const {
-      props: { operation, addCalcul, clearOperation },
+      props: { operation, addCalcul, clearOperation, getResultOperation },
       handleClickGetResultOperation,
     } = this;
 
@@ -70,7 +67,7 @@ class Calculator extends PureComponent {
           <div className="digitsContainer">
             <Button onClick={() => addCalcul(0)}>0</Button>
             <Button onClick={() => addCalcul('.')}>.</Button>
-            <Button onClick={() => handleClickGetResultOperation()}>=</Button>
+            <Button onClick={() => getResultOperation(operation)}>=</Button>
             <Button onClick={() => addCalcul(1)}>1</Button>
             <Button onClick={() => addCalcul(2)}>2</Button>
             <Button onClick={() => addCalcul(3)}>3</Button>
@@ -101,7 +98,6 @@ const mapDispatchToProps = {
   addCalcul,
   getResultOperation,
   clearOperation,
-  saveOperation,
   randomOperation,
 };
 
