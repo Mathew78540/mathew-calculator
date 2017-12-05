@@ -10,9 +10,9 @@ import Button from '../../components/Button';
 import ClearButton from '../../components/ClearButton';
 import Output from '../../components/Output';
 
-// Store
-import { AddOperation, getResultOperation, clearOperation } from '../../reducers/operation';
-import { saveOperation } from '../../reducers/operations';
+// Ducks
+import { AddOperation, getResultOperation, clearOperation } from '../../ducks/operation';
+import { saveOperation } from '../../ducks/operations';
 
 // Helpers
 import { generateRandomOperation } from './helper';
