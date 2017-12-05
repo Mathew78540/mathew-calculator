@@ -1,4 +1,5 @@
 import { handleActions, createAction } from 'redux-actions';
+import { RANDOM_OPERATION } from './operation';
 
 // Types
 export const SAVE_OPERATION = 'src/ducks/SAVE_OPERATION';
@@ -12,6 +13,10 @@ const initialState = [];
 // Reducer
 const operationsReducer = handleActions({
   [SAVE_OPERATION]: (state, { payload: operation }) => ([
+    ...state,
+    operation,
+  ]),
+  [RANDOM_OPERATION]: (state, { payload: operation }) => ([
     ...state,
     operation,
   ]),

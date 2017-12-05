@@ -11,11 +11,11 @@ import ClearButton from '../../components/ClearButton';
 import Output from '../../components/Output';
 
 // Ducks
-import { addCalcul, getResultOperation, clearOperation } from '../../ducks/operation';
+import { addCalcul, getResultOperation, clearOperation, randomOperation } from '../../ducks/operation';
 import { saveOperation } from '../../ducks/operations';
 
 // Helpers
-import { generateRandomOperation } from './helper';
+import { generateRandomOperation } from '../../ducks/helper';
 
 /**
  * Calculator
@@ -30,23 +30,11 @@ class Calculator extends PureComponent {
   componentDidMount() {
     window.addEventListener('keypress', (e) => {
       if (e.keyCode === 32) {
-        this.pushRandomOperation();
+        const operation = generateRandomOperation();
+
+        this.props.randomOperation(operation);
       }
     }, false);
-  }
-
-  /**
-   * PushRandomOperation
-   * 
-   * @description
-   * Get random operation and push it into the reducer
-   */
-  pushRandomOperation = () => {
-    const randomOperation = generateRandomOperation();
-
-    this.props.clearOperation();
-    this.props.addCalcul(randomOperation);
-    this.handleClickGetResultOperation();
   }
 
   /**
@@ -114,6 +102,7 @@ const mapDispatchToProps = {
   getResultOperation,
   clearOperation,
   saveOperation,
+  randomOperation,
 };
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
