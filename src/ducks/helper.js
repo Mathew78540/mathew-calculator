@@ -27,9 +27,7 @@ export const getRandomOperator = () => {
  */
 export const returnCalculResult = (calcul) => {
   try {
-    const result = eval(calcul).toString();
-
-    return result;
+    return eval(calcul).toString();
   } catch (err) {
     return 'error';
   }
