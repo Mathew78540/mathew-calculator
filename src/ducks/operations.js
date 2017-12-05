@@ -1,7 +1,7 @@
 import { handleActions, createAction } from 'redux-actions';
 
 // Types
-export const SAVE_OPERATION = 'src/reducers/SAVE_OPERATION';
+export const SAVE_OPERATION = 'src/ducks/SAVE_OPERATION';
 
 // Actions
 export const saveOperation = createAction(SAVE_OPERATION);

@@ -1,9 +1,9 @@
 import { handleActions, createAction } from 'redux-actions';
 
 // Types
-export const ADD_IN_OPERATION = 'src/reducers/ADD_IN_OPERATION';
-export const GET_RESULT_OPERATION = 'src/reducers/GET_RESULT_OPERATION';
-export const CLEAR_OPERATION = 'src/reducers/CLEAR';
+export const ADD_IN_OPERATION = 'src/ducks/ADD_IN_OPERATION';
+export const GET_RESULT_OPERATION = 'src/ducks/GET_RESULT_OPERATION';
+export const CLEAR_OPERATION = 'src/ducks/CLEAR';
 
 // Actions
 export const AddOperation = createAction(ADD_IN_OPERATION);
