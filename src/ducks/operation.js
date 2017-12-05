@@ -1,12 +1,12 @@
 import { handleActions, createAction } from 'redux-actions';
 
 // Types
-export const ADD_IN_OPERATION = 'src/ducks/ADD_IN_OPERATION';
+export const ADD_CALCUL = 'src/ducks/ADD_CALCUL';
 export const GET_RESULT_OPERATION = 'src/ducks/GET_RESULT_OPERATION';
 export const CLEAR_OPERATION = 'src/ducks/CLEAR';
 
 // Actions
-export const AddOperation = createAction(ADD_IN_OPERATION);
+export const addCalcul = createAction(ADD_CALCUL);
 export const getResultOperation = createAction(GET_RESULT_OPERATION);
 export const clearOperation = createAction(CLEAR_OPERATION);
 
@@ -18,7 +18,7 @@ const initialState = {
 
 // Reducer
 const operationReducer = handleActions({
-  [ADD_IN_OPERATION]: (state, { payload }) => ({
+  [ADD_CALCUL]: (state, { payload }) => ({
     ...state,
     calcul: `${state.calcul}${payload}`,
   }),

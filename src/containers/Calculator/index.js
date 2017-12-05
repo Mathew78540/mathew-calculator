@@ -11,7 +11,7 @@ import ClearButton from '../../components/ClearButton';
 import Output from '../../components/Output';
 
 // Ducks
-import { AddOperation, getResultOperation, clearOperation } from '../../ducks/operation';
+import { addCalcul, getResultOperation, clearOperation } from '../../ducks/operation';
 import { saveOperation } from '../../ducks/operations';
 
 // Helpers
@@ -45,7 +45,7 @@ class Calculator extends PureComponent {
     const randomOperation = generateRandomOperation();
 
     this.props.clearOperation();
-    this.props.AddOperation(randomOperation);
+    this.props.addCalcul(randomOperation);
     this.handleClickGetResultOperation();
   }
 
@@ -67,7 +67,7 @@ class Calculator extends PureComponent {
    */
   render() {
     const {
-      props: { operation, AddOperation, clearOperation },
+      props: { operation, addCalcul, clearOperation },
       handleClickGetResultOperation,
     } = this;
 
@@ -80,24 +80,24 @@ class Calculator extends PureComponent {
         <div className="buttonsContainer">
           <ClearButton onClick={() => clearOperation()}>C</ClearButton>
           <div className="digitsContainer">
-            <Button onClick={() => AddOperation(0)}>0</Button>
-            <Button onClick={() => AddOperation('.')}>.</Button>
+            <Button onClick={() => addCalcul(0)}>0</Button>
+            <Button onClick={() => addCalcul('.')}>.</Button>
             <Button onClick={() => handleClickGetResultOperation()}>=</Button>
-            <Button onClick={() => AddOperation(1)}>1</Button>
-            <Button onClick={() => AddOperation(2)}>2</Button>
-            <Button onClick={() => AddOperation(3)}>3</Button>
-            <Button onClick={() => AddOperation(4)}>4</Button>
-            <Button onClick={() => AddOperation(5)}>5</Button>
-            <Button onClick={() => AddOperation(6)}>6</Button>
-            <Button onClick={() => AddOperation(7)}>7</Button>
-            <Button onClick={() => AddOperation(8)}>8</Button>
-            <Button onClick={() => AddOperation(9)}>9</Button>
+            <Button onClick={() => addCalcul(1)}>1</Button>
+            <Button onClick={() => addCalcul(2)}>2</Button>
+            <Button onClick={() => addCalcul(3)}>3</Button>
+            <Button onClick={() => addCalcul(4)}>4</Button>
+            <Button onClick={() => addCalcul(5)}>5</Button>
+            <Button onClick={() => addCalcul(6)}>6</Button>
+            <Button onClick={() => addCalcul(7)}>7</Button>
+            <Button onClick={() => addCalcul(8)}>8</Button>
+            <Button onClick={() => addCalcul(9)}>9</Button>
           </div>
           <div className="operatorsContainer">
-            <Button onClick={() => AddOperation('*')}>X</Button>
-            <Button onClick={() => AddOperation('-')}>-</Button>
-            <Button onClick={() => AddOperation('+')}>+</Button>
-            <Button onClick={() => AddOperation('/')}>/</Button>
+            <Button onClick={() => addCalcul('*')}>X</Button>
+            <Button onClick={() => addCalcul('-')}>-</Button>
+            <Button onClick={() => addCalcul('+')}>+</Button>
+            <Button onClick={() => addCalcul('/')}>/</Button>
           </div>
         </div>
       </div>
@@ -110,7 +110,7 @@ const mapStateToProps = ({ operation }) => ({
 });
 
 const mapDispatchToProps = {
-  AddOperation,
+  addCalcul,
   getResultOperation,
   clearOperation,
   saveOperation,
