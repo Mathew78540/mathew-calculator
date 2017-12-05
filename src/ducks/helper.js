@@ -25,7 +25,15 @@ export const getRandomOperator = () => {
  * 
  * @returns {string}
  */
-export const returnCalculResult = (calcul) => eval(calcul).toString();
+export const returnCalculResult = (calcul) => {
+  try {
+    const result = eval(calcul).toString();
+
+    return result;
+  } catch (err) {
+    return 'error';
+  }
+};
 
 /**
  * GenerateRandomOperation
